@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Management System</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<header th:insert="menu.html"/>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4" th:text="#{person.profit.header}"/>
+        </div>
+    </div>
+    <div class="row col-md-7 table-responsive">
+        <form th:action="${action}" th:object="${person}" method="post">
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.hours} + '('+*{hoursWorked} +')'"/>
+                    <input type="text" class="form-control" th:id="hoursWorked" th:name="hoursWorked" th:value="0" >
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.money} + '('+*{moneyEarned} +')'"/>
+                    <input type="text" class="form-control" th:id="moneyEarned" th:name="moneyEarned" th:value="0" >
+                </div>
+
+                <div class="col-md-6 form-group">
+                    <button type="submit" th:text="#{form.submit}" class="btn btn-primary"/>
+                    <button type="reset" th:text="#{form.reset}" class="btn btn-danger"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+
+</body>
+</html>

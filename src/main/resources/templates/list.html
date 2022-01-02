@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Management System</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<header th:insert="menu.html"/>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4" th:text="#{person.list.header}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row col-md-10 table-responsive">
+            <table id="personTable" class="table" th:if="${persons != null && !persons.isEmpty()}">
+                <thead>
+                <tr>
+                    <th th:text="#{person.list.name}"/>
+                    <th th:text="#{person.list.surname}"/>
+                    <th th:text="#{person.list.email}"/>
+                    <th th:text="#{person.list.telephone}"/>
+                    <th th:text="#{person.list.rate}"/>
+                    <th th:text="#{person.list.rate}"/>
+                    <th th:text="#{person.list.details}"/>
+                    <th th:text="#{person.list.edit}"/>
+                    <th th:text="#{person.list.delete}"/>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="person, rowStat: ${persons}"
+                    th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                    <td th:text="${person.name}"/>
+                    <td th:text="${person.surname}"/>
+                    <td th:text="${person.email}"/>
+                    <td th:text="${person.telephone}"/>
+                    <td th:text="${person.moneyEarned/person.hoursWorked}"/>
+                    <td>
+                        <a th:href="@{'/person/profit/' + ${person.personUuid}}" class="btn btn-outline-secondary btn-sm">
+                            <span th:text="#{person.list.changeProfit}"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/person/details/' + ${person.personUuid}}" class="btn btn-info btn-sm">
+                            <span th:text="#{person.list.details}"/>
+                        </a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/person/edit/' + ${person.personUuid}}" class="btn btn-success btn-sm">
+                            <span th:text="#{person.list.edit}"/>
+                        </a>
+                    </td>
+                    <td>
+                        <form th:action="@{'/person/delete/' + ${person.personUuid}}" method="post">
+                            <button type="submit" th:text="#{form.delete}" class="btn btn-danger btn-sm"/>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <span th:if="${persons == null || persons.isEmpty()}" th:text="#{person.list.empty}"/>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+
+</body>
+</html>

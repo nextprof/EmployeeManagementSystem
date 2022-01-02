@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Management System</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<header th:insert="menu.html"/>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4" th:text="#{person.add.header}"/>
+        </div>
+    </div>
+    <div class="row col-md-7 table-responsive">
+        <form th:action="${action}" th:object="${person}" method="post">
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.name}"/>
+                    <input type="text" class="form-control" th:field="*{name}" >
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.surname}"/>
+                    <input type="text" class="form-control" th:field="*{surname}">
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.email}"/>
+                    <input type="text" class="form-control" th:field="*{email}">
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.telephone}"/>
+                    <input type="text" class="form-control" th:field="*{telephone}" >
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.city}"/>
+                    <input type="text" class="form-control" th:field="*{address.city}" >
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.street}"/>
+                    <input type="text" class="form-control" th:field="*{address.street}">
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('address.street')}" th:errors="*{address.street}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.streetNumber}"/>
+                    <input type="number" step="any" class="form-control" th:field="*{address.streetNumber}" >
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('address.streetNumber')}" th:errors="*{address.streetNumber}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <label th:text="#{form.homeNumber}"/>
+                    <input type="number" step="any" class="form-control" th:field="*{address.homeNumber}">
+                    <p class="alert alert-danger" th:if="${#fields.hasErrors('address.homeNumber')}" th:errors="*{address.homeNumber}">
+                </div>
+                <div class="col-md-6 form-group">
+                    <button type="submit" th:text="#{form.submit}" class="btn btn-primary"/>
+                    <button type="reset" th:text="#{form.reset}" class="btn btn-danger"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+
+</body>
+</html>
