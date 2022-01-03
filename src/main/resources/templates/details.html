@@ -25,8 +25,11 @@
                 <li class="list-group-item"><strong th:text="#{person.details.createdAt}"/> <span th:text="${person.createdAt}"/></li>
                 <li class="list-group-item"><strong th:text="#{person.details.moneyEarned}"/> <span th:text="${person.moneyEarned}"/></li>
                 <li class="list-group-item"><strong th:text="#{person.details.hoursWorked}"/> <span th:text="${person.hoursWorked}"/></li>
-                <li class="list-group-item"><strong th:text="#{person.details.rate}"/> <span th:text="${person.moneyEarned/person.hoursWorked}"/></li>
-<!--                <li class="list-group-item"><strong th:text="#{person.details.holidays}"/> <span th:text="${person.onHolidays}==false ? #{person.details.holidays_no} : #{person.details.holidays_yes}"/></li>-->
+                <li class="list-group-item"><strong th:text="#{person.details.rate}"/> <span th:text="${person.hoursWorked}!=0 ? ${person.moneyEarned/person.hoursWorked}: '0' "/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.holidays}"/> <span th:text="${person.onHolidays}==false ? #{person.details.holidays_no} : #{person.details.holidays_yes}"/>
+                    <form style="display:inline" th:action="@{'/person/holidays/' + ${person.personUuid}}" method="post">
+                        <button type="submit"  th:text="#{form.holidays}" class="btn btn-warning btn-sm"/>
+                    </form></li>
 
                 <li class="list-group-item">
                     <strong th:text="#{person.details.address} + ' '"/>

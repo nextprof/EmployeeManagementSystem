@@ -33,7 +33,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="person, rowStat: ${persons}"
-                    th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+                    th:style="${person.onHolidays==false} ? 'color: gray' : 'color: orange;'">
                     <td th:text="${person.name}"/>
                     <td th:text="${person.surname}"/>
                     <td th:text="${person.email}"/>

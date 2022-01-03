@@ -38,7 +38,7 @@ public final class Person {
     Integer hoursWorked;
     LocalDate createdAt;
 
-//    boolean onHolidays;
+    boolean onHolidays;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")

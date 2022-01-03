@@ -37,7 +37,7 @@ public class PersonService {
         person.setCreatedAt(LocalDate.now());
         person.setMoneyEarned(0.);
         person.setHoursWorked(0);
-        //person.setOnHolidays(false);
+        person.setOnHolidays(false);
         personRepository.save(person);
     }
 
@@ -65,7 +65,7 @@ public class PersonService {
     }
 
     private void checkIsPersonExists(UUID personUuid) {
-        if(!personRepository.findByPersonUuid(personUuid).isPresent()) {
+        if(personRepository.findByPersonUuid(personUuid).isEmpty()) {
             throw new PersonNotFoundException();
         }
     }
@@ -77,6 +77,13 @@ public class PersonService {
         person.setHoursWorked(person.getHoursWorked() + personProfitDto.getHoursWorked());
         person.setMoneyEarned(person.getMoneyEarned() + personProfitDto.getMoneyEarned());
         person.setCreatedAt(LocalDate.now());
+        personRepository.save(person);
+    }
+
+    public void toggleHolidays(UUID personUuid) {
+        checkIsPersonExists(personUuid);
+        final Person person = getPersonByUid(personUuid);
+        person.setOnHolidays(!person.isOnHolidays());
         personRepository.save(person);
     }
 }

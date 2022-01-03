@@ -99,5 +99,11 @@ public class PersonController {
         return "redirect:/person/list";
     }
 
+    @PostMapping("/holidays/{personUuid}")
+    public String toggleHolidaysPerson(@PathVariable UUID personUuid) {
+        personService.toggleHolidays(personUuid);
+        return "redirect:/person/details/" + personUuid;
+    }
+
 
 }
