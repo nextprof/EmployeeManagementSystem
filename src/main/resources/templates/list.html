@@ -25,7 +25,7 @@
                     <th th:text="#{person.list.email}"/>
                     <th th:text="#{person.list.telephone}"/>
                     <th th:text="#{person.list.rate}"/>
-                    <th th:text="#{person.list.rate}"/>
+                    <th th:text="#{person.list.changeProfit}"/>
                     <th th:text="#{person.list.details}"/>
                     <th th:text="#{person.list.edit}"/>
                     <th th:text="#{person.list.delete}"/>
@@ -38,7 +38,7 @@
                     <td th:text="${person.surname}"/>
                     <td th:text="${person.email}"/>
                     <td th:text="${person.telephone}"/>
-                    <td th:text="${person.moneyEarned/person.hoursWorked}"/>
+                    <td th:text="${person.hoursWorked}!=0 ? ${person.moneyEarned/person.hoursWorked}: '0' "/>
                     <td>
                         <a th:href="@{'/person/profit/' + ${person.personUuid}}" class="btn btn-outline-secondary btn-sm">
                             <span th:text="#{person.list.changeProfit}"/>

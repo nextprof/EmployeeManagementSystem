@@ -20,11 +20,11 @@
             <div class="form-row">
                 <div class="col-md-6 form-group">
                     <label th:text="#{form.hours} + '('+*{hoursWorked} +')'"/>
-                    <input type="text" class="form-control" th:id="hoursWorked" th:name="hoursWorked" th:value="0" >
+                    <input type="number" class="form-control" th:id="hoursWorked" th:name="hoursWorked" th:value="0" >
                 </div>
                 <div class="col-md-6 form-group">
                     <label th:text="#{form.money} + '('+*{moneyEarned} +')'"/>
-                    <input type="text" class="form-control" th:id="moneyEarned" th:name="moneyEarned" th:value="0" >
+                    <input type="number" class="form-control" th:id="moneyEarned" th:name="moneyEarned" th:value="0" >
                 </div>
 
                 <div class="col-md-6 form-group">

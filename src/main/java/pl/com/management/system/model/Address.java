@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.UUID;
@@ -29,7 +30,9 @@ public final class Address {
     @NotBlank(message = "Street should not be empty")
     String street;
     @NotNull(message = "Street number cannot be empty")
+    @Min(1)
     Integer streetNumber;
+    @Min(1)
     @NotNull(message = "Home number cannot be empty")
     Integer homeNumber;
 }

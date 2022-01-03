@@ -3,11 +3,13 @@ package pl.com.management.system.service;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.com.management.system.dto.PersonProfitDto;
 import pl.com.management.system.exception.PersonNotFoundException;
 import pl.com.management.system.exception.PersonAlreadyExistsException;
 import pl.com.management.system.model.Person;
 import pl.com.management.system.repository.PersonRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +34,10 @@ public class PersonService {
         }
         person.setPersonUuid(UUID.randomUUID());
         person.getAddress().setAddressUuid(UUID.randomUUID());
+        person.setCreatedAt(LocalDate.now());
+        person.setMoneyEarned(0.);
+        person.setHoursWorked(0);
+        //person.setOnHolidays(false);
         personRepository.save(person);
     }
 
@@ -64,12 +70,13 @@ public class PersonService {
         }
     }
 
-    public void addProfitPerson(UUID personUuid,Person personDto) {
+    public void addProfitPerson(UUID personUuid, PersonProfitDto personProfitDto) {
         checkIsPersonExists(personUuid);
 
         final Person person = getPersonByUid(personUuid);
-        person.setHoursWorked(person.getHoursWorked() + personDto.getHoursWorked());
-        person.setMoneyEarned(person.getMoneyEarned() + personDto.getMoneyEarned());
+        person.setHoursWorked(person.getHoursWorked() + personProfitDto.getHoursWorked());
+        person.setMoneyEarned(person.getMoneyEarned() + personProfitDto.getMoneyEarned());
+        person.setCreatedAt(LocalDate.now());
         personRepository.save(person);
     }
 }

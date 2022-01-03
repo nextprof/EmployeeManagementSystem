@@ -18,17 +18,18 @@
     <div class="row">
         <div class="col-md-4">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span th:text="#{person.details.name}+ ' ' + ${person.name}"/></li>
-                <li class="list-group-item"><span th:text="#{person.details.surname}+ ' ' + ${person.surname}"/></li>
-                <li class="list-group-item"><span th:text="#{person.details.email}+ ' ' + ${person.email}"/></li>
-                <li class="list-group-item"><span th:text="#{person.details.telephone}+ ' ' + ${person.telephone}"/></li>
-                <li class="list-group-item"><span th:text="#{person.details.createdAt}+ ' ' + ${person.createdAt}"/></li>
-                <li class="list-group-item"><span th:text="#{person.details.moneyEarned}+ ' ' + ${person.moneyEarned}"/></li>
-                <li class="list-group-item"><span th:text="#{person.details.hoursWorked}+ ' ' + ${person.hoursWorked}"/></li>
-                <li class="list-group-item"><span th:text="#{person.details.rate}+ ' ' + ${person.moneyEarned/person.hoursWorked}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.name}"/> <span th:text="${person.name}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.surname}"/> <span th:text="${person.surname}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.email}"/> <span th:text="${person.email}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.telephone}"/> <span th:text="${person.telephone}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.createdAt}"/> <span th:text="${person.createdAt}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.moneyEarned}"/> <span th:text="${person.moneyEarned}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.hoursWorked}"/> <span th:text="${person.hoursWorked}"/></li>
+                <li class="list-group-item"><strong th:text="#{person.details.rate}"/> <span th:text="${person.moneyEarned/person.hoursWorked}"/></li>
+<!--                <li class="list-group-item"><strong th:text="#{person.details.holidays}"/> <span th:text="${person.onHolidays}==false ? #{person.details.holidays_no} : #{person.details.holidays_yes}"/></li>-->
 
                 <li class="list-group-item">
-                    <span th:text="#{person.details.address} + ' '"/>
+                    <strong th:text="#{person.details.address} + ' '"/>
                     <span th:text="${person.address.city}"/>
                     <span th:text="${', ul. ' + person.address.street}"/>
                     <span th:text="${person.address.streetNumber}"/>

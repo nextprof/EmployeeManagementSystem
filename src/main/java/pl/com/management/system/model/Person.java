@@ -28,7 +28,8 @@ public final class Person {
     String name;
     @NotBlank(message = "Surname should not be empty")
     String surname;
-    @NotNull
+
+    @NotBlank(message = "Email should not be empty")
     @Email(message = "Email is not valid")
     String email;
     @Pattern(regexp = "[0-9]{9}" , message = "Telephone should contain only 9 digits")
@@ -36,6 +37,8 @@ public final class Person {
     Double moneyEarned;
     Integer hoursWorked;
     LocalDate createdAt;
+
+//    boolean onHolidays;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
