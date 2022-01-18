@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Management System</title>
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body>
+<header th:insert="menu.html"/>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4" th:text="#{employee.info.header}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong th:text="#{employee.info.name}"/> <span th:text="${employee.name}"/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.surname}"/> <span th:text="${employee.surname}"/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.email}"/> <span th:text="${employee.email}"/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.telephone}"/> <span th:text="${employee.telephone}"/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.createdAt}"/> <span th:text="${employee.createdAt}"/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.moneyEarned}"/> <span th:text="${employee.moneyEarned}"/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.hoursWorked}"/> <span th:text="${employee.hoursWorked}"/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.rate}"/> <span th:text="${employee.hoursWorked}!=0 ? ${employee.moneyEarned/employee.hoursWorked}: '0' "/></li>
+                <li class="list-group-item"><strong th:text="#{employee.info.holidays}"/> <span th:text="${employee.onHolidays}==false ? #{employee.info.holidays_no} : #{employee.info.holidays_yes}"/>
+                    <form style="display:inline" th:action="@{'/employees/holidays/' + ${employee.employeeUuid}}" method="post">
+                        <button type="submit"  th:text="#{form.holidays}" class="btn btn-warning btn-sm"/>
+                    </form></li>
+
+                <li class="list-group-item">
+                    <strong th:text="#{employee.info.address} + ' '"/>
+                    <span th:text="${employee.address.city}"/>
+                    <span th:text="${', ul. ' + employee.address.street}"/>
+                    <span th:text="${employee.address.streetNumber}"/>
+                    <span th:if="${employee.address.homeNumber}" th:text="${'/ ' +employee.address.homeNumber}"/>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+
+</body>
+</html>

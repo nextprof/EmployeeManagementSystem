@@ -12,11 +12,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 class="display-4" th:text="#{person.profit.header}"/>
+            <h1 class="display-4" th:text="#{employee.profit.header}"/>
         </div>
     </div>
     <div class="row col-md-7 table-responsive">
-        <form th:action="${action}" th:object="${person}" method="post">
+        <form th:action="${action}" th:object="${employee}" method="post">
             <div class="form-row">
                 <div class="col-md-6 form-group">
                     <label th:text="#{form.hours} + '('+*{hoursWorked} +')'"/>

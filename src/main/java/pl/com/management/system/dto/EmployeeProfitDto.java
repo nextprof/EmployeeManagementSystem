@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.validation.constraints.Min;
 
@@ -12,9 +11,9 @@ import javax.validation.constraints.Min;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PersonProfitDto {
-    @Min(value = 2,message = "test")
+public class EmployeeProfitDto {
+    @Min(value = 0,message = "money should be greater than 0")
     Double moneyEarned;
-    @Min(value = 2,message = "test")
+    @Min(value = 1,message = "hours should be greater than 0")
     Integer hoursWorked;
 }

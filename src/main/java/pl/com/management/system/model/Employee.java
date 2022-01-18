@@ -18,12 +18,12 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Entity
-public final class Person {
+public final class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    UUID personUuid;
+    UUID employeeUuid;
     @NotBlank(message = "Name should not be empty")
     String name;
     @NotBlank(message = "Surname should not be empty")
